@@ -53,6 +53,8 @@
 
 #include "tssproperties.h"
 
+#define TPM_INTERFACE_TYPE_DEFAULT "dev"
+
 /* local prototypes */
 
 static TPM_RC TSS_SetTraceLevel(const char *value);
