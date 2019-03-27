@@ -40,14 +40,14 @@
 
 # C compiler
 
-CC = /usr/bin/gcc
+CC ?= /usr/bin/gcc
 
 # compile - common flags for TSS library and applications
 
 CCFLAGS += 	-DTPM_POSIX
 
 # example of pointing to a locally built openssl 1.1
-# CCFLAGS += 	-I/home/kgold/openssl/include
+CCFLAGS ?= 	-I/media/jbech/SSHD_LINUX/devel/optee_projects/qemu/out-br/build/libopenssl-1.0.2p/include
 
 # compile - for TSS library
 
@@ -84,7 +84,7 @@ LNFLAGS += 	-DTPM_POSIX		\
 #		-fuse-ld=bfd
 
 # example of pointing to a locally built openssl 1.1
-# LNFLAGS +=	 -L/home/kgold/openssl
+LNFLAGS ?=	 -L/media/jbech/SSHD_LINUX/devel/optee_projects/qemu/out-br/build/libopenssl-1.0.2p
 # This also requires setting the environment variable LD_LIBRARY_PATH.  E.g.,
 # setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:/home/kgold/openssl
 
