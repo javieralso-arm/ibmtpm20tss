@@ -40,14 +40,15 @@
 
 # C compiler
 
-CC ?= /usr/bin/gcc
+CC = $(CURDIR)/../../toolchains/aarch64/bin/aarch64-linux-gnu-gcc
 
 # compile - common flags for TSS library and applications
 
 CCFLAGS += 	-DTPM_POSIX
 
 # example of pointing to a locally built openssl 1.1
-CCFLAGS ?= 	-I/media/jbech/SSHD_LINUX/devel/optee_projects/qemu/out-br/build/libopenssl-1.0.2p/include
+OPENSSL_INCLUDE ?= -I$(CURDIR)/../../out-br/build/libopenssl-1.1.1g/include
+CCFLAGS += 	$(OPENSSL_INCLUDE)
 
 # compile - for TSS library
 
@@ -84,7 +85,8 @@ LNFLAGS += 	-DTPM_POSIX		\
 #		-fuse-ld=bfd
 
 # example of pointing to a locally built openssl 1.1
-LNFLAGS ?=	 -L/media/jbech/SSHD_LINUX/devel/optee_projects/qemu/out-br/build/libopenssl-1.0.2p
+OPENSSL_LIB ?= -L$(CURDIR)/../../out-br/build/libopenssl-1.1.1g
+LNFLAGS +=	$(OPENSSL_LIB)
 # This also requires setting the environment variable LD_LIBRARY_PATH.  E.g.,
 # setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:/home/kgold/openssl
 
